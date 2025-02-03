@@ -19,6 +19,7 @@ namespace Client
             return instance;
         }
 
+
         public override void Enter()
         {
             Clear();
@@ -35,11 +36,18 @@ namespace Client
 
             Console.WriteLine("5. 이름변경");
 
+            Console.WriteLine("0. 나가기");
+
 
             string result = Console.ReadLine();
 
             switch (result)
             {
+                case "0":
+                    Clear();
+                    // 게임 종료
+                    Core.GetInst().IsRunning = false;
+                    break;
                 case "1":
                     // StatusScene
                     nextScene = StatusScene.GetInst();
