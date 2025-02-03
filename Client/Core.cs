@@ -18,18 +18,32 @@ namespace Client
             return instance;
         }
 
-        Character character = Character.GetInst();
+        private bool isRun = true;
+        public bool IsRunning
+        {
+            get { return isRun; }
+            set { isRun = value; }
+        }
+
+
+        // Item을 담을 리스트
         List<Item> items = new List<Item>();
 
+        // character 싱글톤
+        Character character = Character.GetInst();
+
+        // currentScene - 시작화면 싱글톤
         Scene currentScene = StartScene.GetInst();
 
-        public int Update()
+        // 계속 반복되는 메서드
+        public void Update()
         {
+            // Scene 진입
             currentScene.Enter();
             
+            // 다음 Scene 지정
             Scene nextScene = currentScene.Exit();
             currentScene = nextScene;
-            return 1;
         }
 
         public void init()
@@ -38,7 +52,7 @@ namespace Client
             itemInit();
         }
 
-
+        // 아이템 초기화
         private void itemInit()
         {
             items.Add(new Item()
@@ -46,7 +60,8 @@ namespace Client
                 Name = "수련자 갑옷",
                 Defense = 5,
                 Description = "수련에 도움을 주는 갑옷입니다.",
-                Gold = 1000
+                Gold = 1000,
+                Equip = false
             });
 
             items.Add(new Item()
@@ -54,7 +69,8 @@ namespace Client
                 Name = "무쇠 갑옷",
                 Defense = 9,
                 Description = "무쇠로 만들어져 튼튼한 갑옷입니다.",
-                Gold = 2000
+                Gold = 2000,
+                Equip = true
             });
 
             items.Add(new Item()
@@ -62,7 +78,8 @@ namespace Client
                 Name = "스파르타의 갑옷",
                 Defense = 15,
                 Description = "스파르타의 전사들이 사용했다는 전설의 갑옷입니다.",
-                Gold = 3500
+                Gold = 3500,
+                Equip = false
             });
 
             items.Add(new Item()
@@ -70,7 +87,8 @@ namespace Client
                 Name = "낡은 검",
                 Attack = 2,
                 Description = "쉽게 볼 수 있는 낡은 검 입니다.",
-                Gold = 600
+                Gold = 600,
+                Equip = false
             });
 
             items.Add(new Item()
@@ -78,7 +96,8 @@ namespace Client
                 Name = "청동 도끼",
                 Attack = 5,
                 Description = "어디선가 사용됐던거 같은 도끼입니다.",
-                Gold = 1500
+                Gold = 1500,
+                Equip = false
             });
 
             items.Add(new Item()
@@ -86,7 +105,8 @@ namespace Client
                 Name = "스파르타의 창",
                 Attack = 7,
                 Description = "스파르타의 전사들이 사용했다는 전설의 창입니다.",
-                Gold = 3000
+                Gold = 3000,
+                Equip = true
             });
         }
     }

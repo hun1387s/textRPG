@@ -17,5 +17,11 @@ namespace Client
         public int Attack { get; set; }
         public string? Description { get; set; }
         public int Gold { get; set; }
+        public bool Equip { get; set; }
+
+
     }
+
 }
+
+

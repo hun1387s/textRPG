@@ -24,7 +24,7 @@ namespace Client
         private int attack = 10;
         private int defense = 5;
         private int hp = 100;
-        private int gold = 0;
+        private int gold = 1500;
 
         public int Level
         {

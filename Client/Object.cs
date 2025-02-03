@@ -8,7 +8,8 @@ namespace Client
 {
     internal abstract class Object
     {
-        public string name;
+        public string? name;
+        public int ID;
 
         //public string Name
         //{
