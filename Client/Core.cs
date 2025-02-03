@@ -8,6 +8,7 @@ namespace Client
 {
     internal class Core
     {
+        // Singleton
         private Core() { }
         private static Core? instance;
         public static Core GetInst()

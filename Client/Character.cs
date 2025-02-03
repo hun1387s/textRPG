@@ -8,6 +8,7 @@ namespace Client
 {
     internal class Character : Object
     {
+        // Singleton
         private Character() { }
         private static Character? instance;
         public static Character GetInst()
@@ -17,9 +18,9 @@ namespace Client
 
             return instance;
         }
-
+        private string name = "HUNimation";
         private int level = 1;
-        private string job = "None";
+        private string job = "무직";
         private int attack = 10;
         private int defense = 5;
         private int hp = 100;

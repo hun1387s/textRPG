@@ -8,6 +8,7 @@ namespace Client
 {
     internal class StatusScene : Scene
     {
+        // Singleton
         private StatusScene() { }
         private static StatusScene? instance;
         public static StatusScene GetInst()
@@ -27,7 +28,7 @@ namespace Client
             Console.WriteLine("캐릭터의 정보가 표시됩니다.\n");
 
             Console.WriteLine($"Lv. {character.Level.ToString()}");
-            Console.WriteLine($"{character.Name} ({character.Level.ToString()})");
+            Console.WriteLine($"{character.Name} ({character.Job.ToString()})");
             Console.WriteLine($"공격력: {character.Attack.ToString()}");
             Console.WriteLine($"방어력: {character.Defense.ToString()}");
             Console.WriteLine($"체 력: {character.HP.ToString()}");
@@ -44,6 +45,7 @@ namespace Client
                     break;
 
                 default:
+                    // 지금 Scene 재반환 및 화면 정리
                     Console.WriteLine("올바른 값을 입력하세요.");
                     Thread.Sleep(1000);
                     break;

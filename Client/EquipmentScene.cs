@@ -8,6 +8,7 @@ namespace Client
 {
     internal class EquipmentScene : Scene
     {
+        // Singleton
         private EquipmentScene() { }
         private static EquipmentScene? instance;
         public static EquipmentScene GetInst()
