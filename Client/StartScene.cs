@@ -36,7 +36,7 @@ namespace Client
 
             Console.WriteLine("5. 이름변경");
 
-            Console.WriteLine("0. 나가기");
+            Console.WriteLine("\n\n0. 게임 종료");
 
 
             string result = Console.ReadLine();
