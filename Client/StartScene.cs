@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,11 @@ namespace Client
                 instance = new StartScene();
             return instance;
         }
+
         public override void Enter()
         {
             Clear();
+            nextScene = this;
             //Character character = Character.GetInst();
 
             Console.WriteLine("RPG 마을에 오신 여러분 환영합니다.");
@@ -28,15 +31,33 @@ namespace Client
             Console.WriteLine("2. 인벤토리");
             Console.WriteLine("3. 상점");
 
-            int result = int.Parse(Console.ReadLine());
+            string result = Console.ReadLine();
 
-            if (result == 1)
-            { }
+            switch (result)
+            {
+                case "1":
+                    // StatusScene
+                    nextScene = StatusScene.GetInst();
+                    break;
+                case "2":
+                    // InventoryScene
+                    nextScene = InventoryScene.GetInst();
+                    break;
+                case "3":
+                    // EquipmentScene
+                    nextScene = EquipmentScene.GetInst();
+                    break;
+
+                default:
+                    Console.WriteLine("올바른 값을 입력하세요.");
+                    Thread.Sleep(1000);
+                    break;
+            }
         }
 
-        public override void Exit()
+        public override Scene Exit()
         {
-
+            return nextScene;
         }
     }
 }
