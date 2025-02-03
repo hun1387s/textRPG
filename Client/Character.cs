@@ -9,8 +9,7 @@ namespace Client
     internal class Character : Object
     {
         private Character() { }
-        private static Character instance;
-
+        private static Character? instance;
         public static Character GetInst()
         {
             if (instance == null)
@@ -19,10 +18,11 @@ namespace Client
             return instance;
         }
 
-        private int level = 0;
+        private int level = 1;
         private string job = "None";
-        private int attack = 0;
-        private int defense = 0;
+        private int attack = 10;
+        private int defense = 5;
+        private int hp = 100;
         private int gold = 0;
 
         public int Level
@@ -49,6 +49,11 @@ namespace Client
         {
             get { return defense; }
             set { defense = value; }
+        }
+        public int HP
+        {
+            get { return hp; }
+            set { hp = value; }
         }
         public int Gold
         {
