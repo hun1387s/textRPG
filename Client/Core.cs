@@ -17,23 +17,24 @@ namespace Client
             return instance;
         }
 
-        Character character;
+        Character character = Character.GetInst();
         List<Item> items = new List<Item>();
+
+        Scene currentScene = StartScene.GetInst();
 
         public int Update()
         {
-            if (Console.ReadLine() == "Exit")
-            {
-                Console.WriteLine("Exit 명령어로 종료합니다.");
-                return -1;
-            }
-            return 0;
+            currentScene.Enter();
+            
+            Scene nextScene = currentScene.Exit();
+            currentScene = nextScene;
+            return 1;
         }
 
         public void init()
         {
             character = Character.GetInst();
-
+            itemInit();
         }
 
 
