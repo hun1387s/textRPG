@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    internal class Scene
+    internal abstract class Scene : Object
     {
-        private void Clear()
+        public void Clear()
         {
             Console.Clear();
         }
 
-        public 
+        //public abstract void Init();
+        public abstract void Enter();
+        public abstract void Exit();
+
     }
 }
