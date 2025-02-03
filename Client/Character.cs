@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    internal class Charactor
+    internal class Character : Object
     {
+        private Character() { }
+        private static Character instance;
+
+        public static Character GetInst()
+        {
+            if (instance == null)
+                instance = new Character();
+
+            return instance;
+        }
+
         private int level = 0;
-        private string name = "";
-        private string job = "";
+        private string job = "None";
         private int attack = 0;
         private int defense = 0;
         private int gold = 0;
@@ -45,6 +55,7 @@ namespace Client
             get { return gold; }
             set { gold = value; }
         }
+
 
     }
 }
