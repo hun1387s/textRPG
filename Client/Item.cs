@@ -18,6 +18,7 @@ namespace Client
         public string? Description { get; set; }
         public int Gold { get; set; }
         public bool Equip { get; set; }
+        public bool Own {  get; set; }
 
 
     }

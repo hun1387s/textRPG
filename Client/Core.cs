@@ -27,7 +27,7 @@ namespace Client
 
 
         // Item을 담을 리스트
-        List<Item> items = new List<Item>();
+        public List<Item> items = new List<Item>();
 
         // character 싱글톤
         Character character = Character.GetInst();
@@ -44,6 +44,8 @@ namespace Client
             // 다음 Scene 지정
             Scene nextScene = currentScene.Exit();
             currentScene = nextScene;
+
+
         }
 
         public void init()
@@ -61,7 +63,8 @@ namespace Client
                 Defense = 5,
                 Description = "수련에 도움을 주는 갑옷입니다.",
                 Gold = 1000,
-                Equip = false
+                Equip = false,
+                Own = false,
             });
 
             items.Add(new Item()
@@ -70,7 +73,8 @@ namespace Client
                 Defense = 9,
                 Description = "무쇠로 만들어져 튼튼한 갑옷입니다.",
                 Gold = 2000,
-                Equip = true
+                Equip = false,
+                Own = true
             });
 
             items.Add(new Item()
@@ -79,7 +83,8 @@ namespace Client
                 Defense = 15,
                 Description = "스파르타의 전사들이 사용했다는 전설의 갑옷입니다.",
                 Gold = 3500,
-                Equip = false
+                Equip = false,
+                Own = false,
             });
 
             items.Add(new Item()
@@ -88,7 +93,8 @@ namespace Client
                 Attack = 2,
                 Description = "쉽게 볼 수 있는 낡은 검 입니다.",
                 Gold = 600,
-                Equip = false
+                Equip = false,
+                Own = true,
             });
 
             items.Add(new Item()
@@ -97,7 +103,8 @@ namespace Client
                 Attack = 5,
                 Description = "어디선가 사용됐던거 같은 도끼입니다.",
                 Gold = 1500,
-                Equip = false
+                Equip = false,
+                Own = false,
             });
 
             items.Add(new Item()
@@ -106,7 +113,8 @@ namespace Client
                 Attack = 7,
                 Description = "스파르타의 전사들이 사용했다는 전설의 창입니다.",
                 Gold = 3000,
-                Equip = true
+                Equip = false,
+                Own = true,
             });
         }
     }
