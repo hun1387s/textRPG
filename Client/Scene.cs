@@ -8,6 +8,7 @@ namespace Client
 {
     internal abstract class Scene : Object
     {
+        public Scene? nextScene;
         public void Clear()
         {
             Console.Clear();
@@ -15,7 +16,8 @@ namespace Client
 
         //public abstract void Init();
         public abstract void Enter();
-        public abstract void Exit();
+        public abstract Scene Exit();
+        
 
     }
 }
