@@ -20,8 +20,9 @@ namespace Client
         }
         private string name = "HUNimation";
         private int level = 1;
+        private int dgTry = 0;
         private string job = "무직";
-        private int attack = 10;
+        private float attack = 10f;
         private int defense = 5;
         private int hp = 100;
         private int gold = 1500;
@@ -41,7 +42,7 @@ namespace Client
             get { return job; }
             set { job = value; }
         }
-        public int Attack
+        public float Attack
         {
             get { return attack; }
             set { attack = value; }
@@ -61,7 +62,26 @@ namespace Client
             get { return gold; }
             set { gold = value; }
         }
+        public int DGtry
+        {
+            get { return dgTry; }
+            set { dgTry = value; }
+        }
 
 
+        // 레벨 업 구간인지 체크
+        public void LevelCheck()
+        {
+            for (int i = 0; i < Level; i++)
+            {
+                if (level == i && dgTry == i)
+                {
+                    level++;
+                    dgTry = 0;
+                    attack += 0.5f;
+                    defense += 1;
+                }
+            }
+        }
     }
 }
