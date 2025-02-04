@@ -79,6 +79,16 @@ namespace Client
                     SellItem(6);
                     break;
 
+                case "7":
+                    // 6번 아이템 판매 시도
+                    SellItem(6);
+                    break;
+
+                case "8":
+                    // 6번 아이템 판매 시도
+                    SellItem(6);
+                    break;
+
                 default:
                     // 지금 Scene 재반환 및 화면 정리
                     Console.WriteLine("올바른 값을 입력하세요.");
@@ -93,8 +103,10 @@ namespace Client
         }
         private void SellItem(int idx)
         {
+            EquipmentScene equipmentScene = EquipmentScene.GetInst();
+            Item item = core.items[idx - 1];
             // 판매 불가
-            if (!core.items[idx - 1].Own)
+            if (!item.Own)
             {
                 Console.WriteLine("소유하지 않은 아이템입니다.");
                 Thread.Sleep(1000);
@@ -102,9 +114,13 @@ namespace Client
             // 판매 가능
             else
             {
-                core.items[idx - 1].Own = false;
-                core.items[idx - 1].Equip = false;
-                character.Gold += (int)((float)core.items[idx - 1].Gold * 0.85f);
+                // 장착 중이라면 장착 해제
+                if (item.Equip)
+                {
+                    equipmentScene.MountItem(item, false);
+                }
+                item.Own = false;
+                character.Gold += (int)((float)item.Gold * 0.85f);
                 Console.WriteLine("판매를 완료했습니다.");
                 Thread.Sleep(1000);
             }

@@ -163,8 +163,7 @@ namespace Client
 
             MountItem(item, equip);
         }
-
-        private void MountItem(Item item, bool equip)
+        public void MountItem(Item item, bool equip)
         {
             // 아이템 성능 적용
 

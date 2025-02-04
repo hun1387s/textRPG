@@ -79,6 +79,16 @@ namespace Client
                     BuyItem(6);
                     break;
 
+                case "7":
+                    // 6번 아이템 구매 시도
+                    BuyItem(6);
+                    break;
+
+                case "8":
+                    // 6번 아이템 구매 시도
+                    BuyItem(6);
+                    break;
+
                 default:
                     // 지금 Scene 재반환 및 화면 정리
                     Console.WriteLine("올바른 값을 입력하세요.");

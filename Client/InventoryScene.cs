@@ -88,7 +88,7 @@ namespace Client
                     {
                         count++;
                         equip = "[E]";
-                        Console.WriteLine($" -{count} {equip}{core.items[i].Name} | {AorD} | {core.items[i].Description}");
+                        Console.WriteLine($" -{equip}{core.items[i].Name} | {AorD} | {core.items[i].Description}");
                     }
 
                     
