@@ -57,8 +57,8 @@ namespace Client
                     nextScene = InventoryScene.GetInst();
                     break;
                 case "3":
-                    // EquipmentScene
-                    nextScene = EquipmentScene.GetInst();
+                    // ShopScene
+                    nextScene = ShopScene.GetInst();
                     break;
                 case "5":
                     // 이름 변경

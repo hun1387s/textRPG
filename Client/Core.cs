@@ -44,8 +44,6 @@ namespace Client
             // 다음 Scene 지정
             Scene nextScene = currentScene.Exit();
             currentScene = nextScene;
-
-
         }
 
         public void init()
