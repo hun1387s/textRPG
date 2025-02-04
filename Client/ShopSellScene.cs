@@ -38,6 +38,8 @@ namespace Client
 
             Console.WriteLine("\n\n0. 나가기");
 
+            Console.WriteLine("\n원하시는 행동을 입력해주세요.\n");
+
             string result = Console.ReadLine();
 
             switch (result)
@@ -101,6 +103,7 @@ namespace Client
             else
             {
                 core.items[idx - 1].Own = false;
+                core.items[idx - 1].Equip = false;
                 character.Gold += (int)((float)core.items[idx - 1].Gold * 0.85f);
                 Console.WriteLine("판매를 완료했습니다.");
                 Thread.Sleep(1000);

@@ -31,6 +31,8 @@ namespace Client
             Console.WriteLine("\n\n1. 장착 관리");
             Console.WriteLine("0. 나가기");
 
+            Console.WriteLine("\n원하시는 행동을 입력해주세요.\n");
+
 
             string result = Console.ReadLine();
 

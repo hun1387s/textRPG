@@ -38,6 +38,8 @@ namespace Client
 
             Console.WriteLine("\n\n0. 게임 종료");
 
+            Console.WriteLine("\n원하시는 행동을 입력해주세요.\n");
+
 
             string result = Console.ReadLine();
 
@@ -61,12 +63,12 @@ namespace Client
                     nextScene = ShopScene.GetInst();
                     break;
                 case "4":
-                    // D
-                    nextScene = ShopScene.GetInst();
+                    // DungeonScene
+                    nextScene = DungeonScene.GetInst();
                     break;
                 case "5":
                     // RestScene
-                    nextScene = ShopScene.GetInst();
+                    nextScene = RestScene.GetInst();
                     break;
 
                 case "debug":
