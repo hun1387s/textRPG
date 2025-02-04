@@ -114,6 +114,26 @@ namespace Client
                 Equip = false,
                 Own = true,
             });
+
+            items.Add(new Item()
+            {
+                Name = "운영자의 스테인리스 빨대",
+                Attack = 3000,
+                Description = "운영자가 사용하다가 던져놓은 빨대입니다.",
+                Gold = 50000,
+                Equip = false,
+                Own = false,
+            });
+
+            items.Add(new Item()
+            {
+                Name = "운영자의 목베게",
+                Defense = 3000,
+                Description = "운영자가 애용하는 목베게입니다.",
+                Gold = 50000,
+                Equip = false,
+                Own = false,
+            });
         }
     }
 }
