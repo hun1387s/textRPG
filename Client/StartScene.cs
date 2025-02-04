@@ -18,13 +18,13 @@ namespace Client
                 instance = new StartScene();
             return instance;
         }
-
+        Character character = Character.GetInst();
 
         public override void Enter()
         {
             Clear();
             nextScene = this;
-            Character character = Character.GetInst();
+            
 
             Console.WriteLine("RPG 마을에 오신 여러분 환영합니다.");
             Console.WriteLine("이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n");
@@ -33,6 +33,7 @@ namespace Client
             Console.WriteLine("2. 인벤토리");
             Console.WriteLine("3. 상점");
             Console.WriteLine("4. 던전 들어가기");
+            Console.WriteLine("5. 휴식");
 
 
             Console.WriteLine("\n\n0. 게임 종료");
@@ -59,7 +60,19 @@ namespace Client
                     // ShopScene
                     nextScene = ShopScene.GetInst();
                     break;
+                case "4":
+                    // D
+                    nextScene = ShopScene.GetInst();
+                    break;
+                case "5":
+                    // RestScene
+                    nextScene = ShopScene.GetInst();
+                    break;
 
+                case "debug":
+                    // DebugMode
+                    DebugMode();
+                    break;
 
                 default:
                     // 지금 Scene 재반환 및 화면 정리
@@ -73,5 +86,32 @@ namespace Client
         {
             return nextScene;
         }
+
+        private void DebugMode()
+        {
+            bool debugRun = true;
+            while (debugRun)
+            {
+                Clear();
+                Console.WriteLine($"보유 골드 : {character.Gold} G");
+                Console.WriteLine($"레벨 : lv.{character.Level}");
+                string result = Console.ReadLine();
+
+                switch (result)
+                {
+                    case "money":
+                        character.Gold += 10000;
+                        break;
+                    case "level":
+                        character.Level += 1;
+                        break;
+                    default:
+                        debugRun = false;
+                        break;     
+                }
+            }
+        }
+
+
     }
 }
