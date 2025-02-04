@@ -103,7 +103,7 @@ namespace Client
             else
             {
                 // Gold 충분
-                if (core.items[idx - 1].Gold >= character.Gold)
+                if (core.items[idx - 1].Gold <= character.Gold)
                 {
                     core.items[idx - 1].Own = true;
                     character.Gold -= core.items[idx - 1].Gold;

@@ -26,6 +26,8 @@ namespace Client
         private int defense = 5;
         private int hp = 100;
         private int gold = 1500;
+        private Item? weapon = null;
+        private Item? armor = null;
 
         public int Level
         {
@@ -67,7 +69,16 @@ namespace Client
             get { return dgTry; }
             set { dgTry = value; }
         }
-
+        public Item Weapon
+        {
+            get { return weapon; }
+            set {  weapon = value; }
+        }
+        public Item Armor
+        {
+            get { return armor; }
+            set {  armor = value; }
+        }
 
         // 레벨 업 구간인지 체크
         public void LevelCheck()

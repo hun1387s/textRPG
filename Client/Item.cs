@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+enum ITEMTYPE
+{
+    None,
+    Weapon,
+    Armor,
+
+}
+
 namespace Client
 {
     internal class Item : Object
@@ -19,8 +27,7 @@ namespace Client
         public int Gold { get; set; }
         public bool Equip { get; set; }
         public bool Own {  get; set; }
-
-
+        public ITEMTYPE ItemTYPE { get; set; }
     }
 
 }

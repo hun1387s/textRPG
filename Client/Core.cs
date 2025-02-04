@@ -63,6 +63,7 @@ namespace Client
                 Gold = 1000,
                 Equip = false,
                 Own = false,
+                ItemTYPE = ITEMTYPE.Armor
             });
 
             items.Add(new Item()
@@ -72,7 +73,8 @@ namespace Client
                 Description = "무쇠로 만들어져 튼튼한 갑옷입니다.",
                 Gold = 2000,
                 Equip = false,
-                Own = true
+                Own = true,
+                ItemTYPE = ITEMTYPE.Armor
             });
 
             items.Add(new Item()
@@ -83,6 +85,7 @@ namespace Client
                 Gold = 3500,
                 Equip = false,
                 Own = false,
+                ItemTYPE = ITEMTYPE.Armor
             });
 
             items.Add(new Item()
@@ -93,6 +96,7 @@ namespace Client
                 Gold = 600,
                 Equip = false,
                 Own = true,
+                ItemTYPE = ITEMTYPE.Weapon
             });
 
             items.Add(new Item()
@@ -103,6 +107,7 @@ namespace Client
                 Gold = 1500,
                 Equip = false,
                 Own = false,
+                ItemTYPE = ITEMTYPE.Weapon
             });
 
             items.Add(new Item()
@@ -113,6 +118,7 @@ namespace Client
                 Gold = 3000,
                 Equip = false,
                 Own = true,
+                ItemTYPE = ITEMTYPE.Weapon
             });
 
             items.Add(new Item()
@@ -123,6 +129,7 @@ namespace Client
                 Gold = 50000,
                 Equip = false,
                 Own = false,
+                ItemTYPE = ITEMTYPE.Weapon
             });
 
             items.Add(new Item()
@@ -133,6 +140,7 @@ namespace Client
                 Gold = 50000,
                 Equip = false,
                 Own = false,
+                ItemTYPE = ITEMTYPE.Armor
             });
         }
     }

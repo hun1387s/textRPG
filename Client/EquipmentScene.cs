@@ -19,6 +19,7 @@ namespace Client
         }
         List<int> equipIdx;
         Core core = Core.GetInst();
+        Character character = Character.GetInst();
 
         public override void Enter()
         {
@@ -130,21 +131,60 @@ namespace Client
 
         private void SetItemToggle(int idx)
         {
-            bool equip = core.items[idx].Equip ? false : true;
+            Item item = core.items[idx];
+            // 아이템 장착 토글
+            bool equip = item.Equip ? false : true;
 
-            Character character = Character.GetInst();
+            Item prevItem;
+            // 아이템 타입별 한종류만 장착
+            if (item.ItemTYPE == ITEMTYPE.Weapon)
+            {
+                // 무기일 때
+                prevItem = character.Weapon;
+                if (prevItem != null)
+                {
+                    // 이전 장비 해제
+                    MountItem(prevItem, false);
+                    character.Weapon = null;
+                }
+
+            }
+            else if (item.ItemTYPE == ITEMTYPE.Armor)
+            {
+                // 갑옷일 때
+                prevItem = character.Armor;
+                if (prevItem != null)
+                {
+                    // 이전 장비 해제
+                    MountItem(prevItem, false);
+                    character.Armor = null;
+                }
+            }
+
+            MountItem(item, equip);
+        }
+
+        private void MountItem(Item item, bool equip)
+        {
+            // 아이템 성능 적용
+
             if (equip)
             {
-                character.Attack += core.items[idx].Attack;
-                character.Defense += core.items[idx].Defense;
+                character.Attack += item.Attack;
+                character.Defense += item.Defense;
             }
             else
             {
-                character.Attack -= core.items[idx].Attack;
-                character.Defense -= core.items[idx].Defense;
+                character.Attack -= item.Attack;
+                character.Defense -= item.Defense;
             }
 
-            core.items[idx].Equip = equip;
+            item.Equip = equip;
+
+            if (item.ItemTYPE == ITEMTYPE.Weapon)
+                character.Weapon = item;
+            if (item.ItemTYPE == ITEMTYPE.Armor)
+                character.Armor = item;
         }
     }
 }
