@@ -43,37 +43,37 @@ namespace Client
             switch (result)
             {
                 case "0":
-                    // InventoryScene
-                    nextScene = InventoryScene.GetInst();
+                    // ShopScene
+                    nextScene = ShopScene.GetInst();
                     break;
 
                 case "1":
-                    // 1번 아이템 장착 토글
+                    // 1번 아이템 구매 시도
                     BuyItem(1);
                     break;
 
                 case "2":
-                    // 2번 아이템 장착 토글
+                    // 2번 아이템 구매 시도
                     BuyItem(2);
                     break;
 
                 case "3":
-                    // 3번 아이템 장착 토글
+                    // 3번 아이템 구매 시도
                     BuyItem(3);
                     break;
 
                 case "4":
-                    // 4번 아이템 장착 토글
+                    // 4번 아이템 구매 시도
                     BuyItem(4);
                     break;
 
                 case "5":
-                    // 5번 아이템 장착 토글
+                    // 5번 아이템 구매 시도
                     BuyItem(5);
                     break;
 
                 case "6":
-                    // 6번 아이템 장착 토글
+                    // 6번 아이템 구매 시도
                     BuyItem(6);
                     break;
 
@@ -104,6 +104,7 @@ namespace Client
                 if (core.items[idx - 1].Gold >= character.Gold)
                 {
                     core.items[idx - 1].Own = true;
+                    character.Gold -= core.items[idx - 1].Gold;
                     Console.WriteLine("구매를 완료했습니다.");
                     Thread.Sleep(1000);
                 }
@@ -143,12 +144,13 @@ namespace Client
                     // 장비 소유 유무
                     if (core.items[i].Own)
                     {
-                        Console.WriteLine($" -{count} {core.items[i].Name} | {AorD} | {equip}");
+                        Console.WriteLine($" -{count} {core.items[i].Name} | {AorD} | {core.items[i].Description} | {equip}");
                     }
                     else
                     {
-                        Console.WriteLine($" -{count} {core.items[i].Name} | {AorD} | {core.items[i].Description}");
+                        Console.WriteLine($" -{count} {core.items[i].Name} | {AorD} | {core.items[i].Description} | {core.items[i].Gold} G");
                     }
+
 
 
                 }

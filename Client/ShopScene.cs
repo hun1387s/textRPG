@@ -80,7 +80,7 @@ namespace Client
                 string equip = "구매완료";
                 // 공격력 or 방어력
                 string AorD = "";
-                //if (core.items[i].Own)
+                
                 {
                     // 방어 장비
                     if (core.items[i].Defense > 0)
@@ -93,15 +93,13 @@ namespace Client
                         AorD = $"공격력 +{core.items[i].Attack}";
                     }
                     count++;
-                    // 장비 장착 유무
                     if (core.items[i].Own)
                     {
-
-                        Console.WriteLine($" - {core.items[i].Name} | {AorD} | {equip}");
+                        Console.WriteLine($" -{count} {core.items[i].Name} | {AorD} | {core.items[i].Description} | {equip}");
                     }
                     else
                     {
-                        Console.WriteLine($" - {core.items[i].Name} | {AorD} | {core.items[i].Description}");
+                        Console.WriteLine($" -{count} {core.items[i].Name} | {AorD} | {core.items[i].Description} | {core.items[i].Gold} G");
                     }
 
 
