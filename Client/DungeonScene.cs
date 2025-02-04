@@ -119,6 +119,9 @@ namespace Client
             resultReward += (int)(((float)ranValue / 100) * levelReward[dLevel - 1]);
 
             character.Gold += resultReward;
+            character.DGtry++;
+            character.LevelCheck();
+
             Clear();
 
             Console.WriteLine("던전 클리어\n");
