@@ -34,7 +34,6 @@ namespace Client
             Console.WriteLine("3. 상점");
             Console.WriteLine("4. 던전 들어가기");
 
-            Console.WriteLine("5. 이름변경");
 
             Console.WriteLine("\n\n0. 게임 종료");
 
@@ -60,15 +59,7 @@ namespace Client
                     // ShopScene
                     nextScene = ShopScene.GetInst();
                     break;
-                case "5":
-                    // 이름 변경
-                    Clear();
-                    Console.WriteLine("변경할 이름을 입력하세요.");
-                    character.Name = Console.ReadLine();
 
-                    Console.WriteLine($"이름이 '{character.Name}'로 변경되었습니다.");
-                    Thread.Sleep(1000);
-                    break;
 
                 default:
                     // 지금 Scene 재반환 및 화면 정리

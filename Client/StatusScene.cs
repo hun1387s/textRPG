@@ -33,6 +33,8 @@ namespace Client
             Console.WriteLine($"방어력: {character.Defense.ToString()}");
             Console.WriteLine($"체 력: {character.HP.ToString()}");
             Console.WriteLine($"Gold: {character.Gold.ToString()} \n");
+
+            Console.WriteLine("1. 이름변경");
             Console.WriteLine("0. 나가기");
 
             string result = Console.ReadLine();
@@ -42,6 +44,16 @@ namespace Client
                 case "0":
                     // StartScene
                     nextScene = StartScene.GetInst();
+                    break;
+
+                case "1":
+                    // 이름 변경
+                    Clear();
+                    Console.WriteLine("변경할 이름을 입력하세요.");
+                    character.Name = Console.ReadLine();
+
+                    Console.WriteLine($"이름이 '{character.Name}'로 변경되었습니다.");
+                    Thread.Sleep(1000);
                     break;
 
                 default:
