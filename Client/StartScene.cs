@@ -17,14 +17,14 @@ namespace Client
             if (instance == null)
                 instance = new StartScene();
             return instance;
-        }
-        Character character = Character.GetInst();
+        }        
 
         public override void Enter()
         {
             Clear();
             nextScene = this;
-            
+            Core core = Core.GetInst();
+
 
             Console.WriteLine("RPG 마을에 오신 여러분 환영합니다.");
             Console.WriteLine("이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n");
@@ -34,6 +34,9 @@ namespace Client
             Console.WriteLine("3. 상점");
             Console.WriteLine("4. 던전 들어가기");
             Console.WriteLine("5. 휴식");
+
+            Console.WriteLine("\n\n6. 저장하기");
+            Console.WriteLine("7. 불러오기");
 
 
             Console.WriteLine("\n\n0. 게임 종료");
@@ -71,6 +74,19 @@ namespace Client
                     nextScene = RestScene.GetInst();
                     break;
 
+                case "6":
+                    // 저장하기
+                    core.SaveGame();
+                    Thread.Sleep(1000);
+                    break;
+
+                case "7":
+                    // 불러오기
+                    core.LoadGame();
+                    Thread.Sleep(1000);
+                    break;
+
+
                 case "debug":
                     // DebugMode
                     DebugMode();
@@ -89,8 +105,12 @@ namespace Client
             return nextScene;
         }
 
+        
+
+
         private void DebugMode()
         {
+            Character character = Character.GetInst();
             bool debugRun = true;
             while (debugRun)
             {

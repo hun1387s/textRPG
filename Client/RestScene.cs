@@ -17,11 +17,12 @@ namespace Client
                 instance = new RestScene();
             return instance;
         }
-        Character character = Character.GetInst();
+        
 
         public override void Enter()
         {
             Clear();
+            Character character = Character.GetInst();
             nextScene = this;
             Console.WriteLine("휴식하기\n");
             Console.WriteLine($"500G를 내면 체력을 회복 할 수 있습니다. (보유 골드 : {character.Gold} G)\n\n");
@@ -59,6 +60,7 @@ namespace Client
 
         private void Rest()
         {
+            Character character = Character.GetInst();
             if (character.Gold >= 500)
             {
                 character.Gold -= 500;
