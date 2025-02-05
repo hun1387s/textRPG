@@ -17,8 +17,7 @@ namespace Client
                 instance = new ShopSellScene();
             return instance;
         }
-        Core core = Core.GetInst();
-        Character character = Character.GetInst();
+
 
         public override void Enter()
         {
@@ -103,6 +102,9 @@ namespace Client
         }
         private void SellItem(int idx)
         {
+            Core core = Core.GetInst();
+            Character character = Character.GetInst();
+
             EquipmentScene equipmentScene = EquipmentScene.GetInst();
             Item item = core.items[idx - 1];
             // 판매 불가
@@ -128,6 +130,7 @@ namespace Client
 
         private void printItem()
         {
+            Core core = Core.GetInst();
 
             // item 출력
             int count = 0;

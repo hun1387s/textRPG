@@ -17,8 +17,8 @@ namespace Client
                 instance = new ShopBuyScene();
             return instance;
         }
-        Core core = Core.GetInst();
-        Character character = Character.GetInst();
+        
+        
 
         public override void Enter()
         {
@@ -103,6 +103,9 @@ namespace Client
         }
         private void BuyItem(int idx)
         {
+            Character character = Character.GetInst();
+            Core core = Core.GetInst();
+
             // 구매 불가
             if (core.items[idx - 1].Own)
             {
@@ -131,7 +134,8 @@ namespace Client
 
         private void printItem()
         {
-            
+            Core core = Core.GetInst();
+
             // item 출력
             int count = 0;
             for (int i = 0; i < core.items.Count; i++)

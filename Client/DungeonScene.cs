@@ -17,8 +17,7 @@ namespace Client
                 instance = new DungeonScene();
             return instance;
         }
-        Core core = Core.GetInst();
-        Character character = Character.GetInst();
+        
         int[] levelDefense = new int[] { 5, 11, 17 };
         int[] levelReward = new int[] { 1000, 1700, 2500 };
         string[] levelName = new string[] { "쉬운", "일반", "어려운" };
@@ -27,6 +26,7 @@ namespace Client
         int prevGold;
         public override void Enter()
         {
+            Character character = Character.GetInst();
             Clear();
             nextScene = this;
 
@@ -78,6 +78,7 @@ namespace Client
 
         private void TryDungeon(int dLevel)
         {
+            Character character = Character.GetInst();
             int defese = character.Defense;
             Random random = new Random();
             // 캐릭터 방어력이 권장 방어력 보다 낮을 때
@@ -111,6 +112,7 @@ namespace Client
 
         private void Reward(int dLevel)
         {
+            Character character = Character.GetInst();
             Random random = new Random();
             //공격력  ~ 공격력 * 2 의 % 만큼 추가 보상 획득 가능
             int ranValue = random.Next((int)character.Attack, (int)character.Attack * 2);

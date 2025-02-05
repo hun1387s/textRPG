@@ -18,8 +18,8 @@ namespace Client
             return instance;
         }
         List<int> equipIdx;
-        Core core = Core.GetInst();
-        Character character = Character.GetInst();
+
+
 
         public override void Enter()
         {
@@ -131,6 +131,9 @@ namespace Client
 
         private void SetItemToggle(int idx)
         {
+            Core core = Core.GetInst();
+            Character character = Character.GetInst();
+
             Item item = core.items[idx];
             // 아이템 장착 토글
             bool equip = item.Equip ? false : true;
@@ -166,6 +169,7 @@ namespace Client
         public void MountItem(Item item, bool equip)
         {
             // 아이템 성능 적용
+            Character character = Character.GetInst();
 
             if (equip)
             {
