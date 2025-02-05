@@ -7,7 +7,7 @@
             // core 싱글톤
             Core core = Core.GetInst();
             // core 초기화
-            core.init();
+            core.Init();
 
             // 계속 게임 돌아가게하는 반복문
             while (true)

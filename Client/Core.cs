@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Client
@@ -44,13 +46,109 @@ namespace Client
             // 다음 Scene 지정
             Scene nextScene = currentScene.Exit();
             currentScene = nextScene;
+
+            // 게임 종료시 저장
+            if (!isRun)
+            {
+                SaveGame();
+            }
         }
 
-        public void init()
+        public void Init()
         {
             character = Character.GetInst();
             itemInit();
         }
+
+        // 프로젝트 경로
+        static string projectDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+        // 게임 저장 메서드
+        public void SaveGame()
+        {
+            try { SaveCharacter(character); }
+            catch { Failed("캐릭터 저장"); }
+
+            try { SaveItems(items); }
+            catch { Failed("아이템 저장"); }
+        }
+        void SaveCharacter(Character _char)
+        {
+            // 캐릭터 저장
+            string filePath = Path.Combine(projectDir, "data", "character.json");
+            string jsn = JsonSerializer.Serialize(_char
+                        , new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+            File.WriteAllText(filePath, jsn);
+            Console.WriteLine("캐릭터 저장 완료!");
+            Console.WriteLine(filePath);
+            // Thread.Sleep(2000);
+        }
+        void SaveItems(List<Item> _items)
+        {
+            // 아이템 저장
+            string filePath = Path.Combine(projectDir, "data", "items.json");
+            string json = JsonSerializer.Serialize(_items
+                , new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+            File.WriteAllText(filePath, json);
+            Console.WriteLine("아이템 저장 완료!");
+            Console.WriteLine(filePath);
+        }
+        void Failed(string str)
+        {
+            Console.WriteLine($"{str} 실패");
+        }
+
+        // 게임 불러오기
+        public void LoadGame()
+        {
+            try
+            {
+                LoadCharacter(character);
+            }
+            catch { Failed("캐릭터 불러오기"); }
+
+            try
+            {
+                LoadItems(ref items);
+            }
+            catch { Failed("아이템 불러오기"); }
+        }
+        void LoadCharacter(Character _char)
+        {   
+            // 캐릭터 로드
+            string filePath = Path.Combine(projectDir, "data", "character.json");
+            string jsn = File.ReadAllText(filePath);
+
+            Dictionary<string, JsonElement> jsonData = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(jsn);
+
+            _char.Name = jsonData["Name"].GetString();
+            _char.Level = jsonData["Level"].GetInt32();
+            _char.DGtry = jsonData["DGtry"].GetInt32();
+            _char.Job = jsonData["Job"].GetString();
+            _char.Attack = jsonData["Attack"].GetSingle();
+            _char.Defense = jsonData["Defense"].GetInt32();
+            _char.HP = jsonData["HP"].GetInt32();
+            _char.Gold = jsonData["Gold"].GetInt32();
+            _char.Armor = JsonSerializer.Deserialize<Item>(jsonData["Armor"].GetRawText());
+            _char.Weapon = JsonSerializer.Deserialize<Item>(jsonData["Weapon"].GetRawText());
+
+            Console.WriteLine("캐릭터 불러오기 완료!");
+            Console.WriteLine(filePath);
+        }
+        void LoadItems(ref List<Item> _items)
+        {
+            // 아이템 로드
+            string filePath = Path.Combine(projectDir, "data", "items.json");
+            string jsn = File.ReadAllText(filePath);
+
+            List<Item> loadItems = new List<Item>();
+            loadItems =  JsonSerializer.Deserialize<List<Item>>(jsn);
+
+            _items = loadItems;
+            Console.WriteLine("아이템 불러오기 완료!");
+            Console.WriteLine(filePath);
+        }
+
 
         // 아이템 초기화
         private void itemInit()
