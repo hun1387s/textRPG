@@ -109,7 +109,7 @@ namespace Client
 
             try
             {
-                LoadItems(items);
+                LoadItems(ref items);
             }
             catch { Failed("아이템 불러오기"); }
         }
@@ -135,7 +135,7 @@ namespace Client
             Console.WriteLine("캐릭터 불러오기 완료!");
             Console.WriteLine(filePath);
         }
-        void LoadItems(List<Item> _items)
+        void LoadItems(ref List<Item> _items)
         {
             // 아이템 로드
             string filePath = Path.Combine(projectDir, "data", "items.json");
