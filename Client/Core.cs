@@ -60,8 +60,10 @@ namespace Client
             itemInit();
         }
 
+        // 프로젝트 경로
         static string projectDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
 
+        // 게임 저장 메서드
         public void SaveGame()
         {
             try { SaveCharacter(character); }
@@ -72,6 +74,7 @@ namespace Client
         }
         void SaveCharacter(Character _char)
         {
+            // 캐릭터 저장
             string filePath = Path.Combine(projectDir, "data", "character.json");
             string jsn = JsonSerializer.Serialize(_char
                         , new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
@@ -82,6 +85,7 @@ namespace Client
         }
         void SaveItems(List<Item> _items)
         {
+            // 아이템 저장
             string filePath = Path.Combine(projectDir, "data", "items.json");
             string json = JsonSerializer.Serialize(_items
                 , new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
@@ -93,6 +97,8 @@ namespace Client
         {
             Console.WriteLine($"{str} 실패");
         }
+
+        // 게임 불러오기
         public void LoadGame()
         {
             try
@@ -108,7 +114,8 @@ namespace Client
             catch { Failed("아이템 불러오기"); }
         }
         void LoadCharacter(Character _char)
-        {
+        {   
+            // 캐릭터 로드
             string filePath = Path.Combine(projectDir, "data", "character.json");
             string jsn = File.ReadAllText(filePath);
 
@@ -122,8 +129,6 @@ namespace Client
             _char.Defense = jsonData["Defense"].GetInt32();
             _char.HP = jsonData["HP"].GetInt32();
             _char.Gold = jsonData["Gold"].GetInt32();
-
-
             _char.Armor = JsonSerializer.Deserialize<Item>(jsonData["Armor"].GetRawText());
             _char.Weapon = JsonSerializer.Deserialize<Item>(jsonData["Weapon"].GetRawText());
 
@@ -132,6 +137,7 @@ namespace Client
         }
         void LoadItems(List<Item> _items)
         {
+            // 아이템 로드
             string filePath = Path.Combine(projectDir, "data", "items.json");
             string jsn = File.ReadAllText(filePath);
 
