@@ -20,30 +20,6 @@ namespace Client
             return instance;
         }
 
-        //[JsonConstructor]
-        //public Character(string _name,
-        //    int _level, 
-        //    int _dgTry, 
-        //    string _job, 
-        //    float _attack, 
-        //    int _defense, 
-        //    int _hp, 
-        //    int _gold, 
-        //    Item _weapon,
-        //    Item _armor)
-        //{
-        //    name = _name;
-        //    level = _level;
-        //    dgTry = _dgTry;
-        //    job = _job;
-        //    attack = _attack;
-        //    defense = _defense;
-        //    hp = _hp;
-        //    gold = _gold;
-        //    weapon = _weapon;
-        //    armor = _armor;
-        //}
-
 
         private string name = "HUNimation";
         private int level = 1;

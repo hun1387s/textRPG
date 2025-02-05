@@ -10,11 +10,5 @@ namespace Client
     {
         public string? name;
         public int ID;
-
-        //public string Name
-        //{
-        //    get { return name; }
-        //    set { name = value; }
-        //}
     }
 }
